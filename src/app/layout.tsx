@@ -5,6 +5,8 @@ import { Roboto } from 'next/font/google';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 
+import UsersContext from '@/context/users-context';
+
 export const metadata: Metadata = {
 	title: 'Alex B.| Renewable.exchange',
 	description:
@@ -28,7 +30,9 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={roboto.variable}>
 				<AppRouterCacheProvider>
-					<ThemeProvider theme={theme}>{children}</ThemeProvider>
+					<UsersContext>
+						<ThemeProvider theme={theme}>{children}</ThemeProvider>
+					</UsersContext>
 				</AppRouterCacheProvider>
 			</body>
 		</html>
