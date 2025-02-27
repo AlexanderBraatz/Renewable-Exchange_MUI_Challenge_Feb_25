@@ -4,26 +4,26 @@ import { useUsersContext } from '@/context/users-context';
 import { User } from '@/types/types';
 
 export default function DataTable() {
-	const { users, setUsers } = useUsersContext();
+	const { users, addNewUser, deleteUserById } = useUsersContext();
 	const exampleUser: User = {
-		id: 'string',
-		name: 'string',
+		id: '',
+		name: 'example',
 		email: 'string',
 		company: 'string',
 		dateAdded: new Date()
 	};
-	function handleClick(newUser: User) {
-		setUsers(prevUsers => {
-			return [...prevUsers, newUser];
-		});
-	}
 
 	return (
 		<>
 			{users.map(user => (
-				<p key={user.id}>user.name</p>
+				<div key={user.id}>
+					<span>{user.name}</span>
+					<button onClick={() => deleteUserById(user.id)}>
+						delete this User
+					</button>
+				</div>
 			))}
-			<button onClick={() => handleClick(exampleUser)}> add User</button>
+			<button onClick={() => addNewUser(exampleUser)}> add User</button>
 		</>
 	);
 }
