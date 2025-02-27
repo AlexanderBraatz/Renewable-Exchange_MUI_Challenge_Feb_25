@@ -10,7 +10,7 @@ import { Box, Button, Card, CardContent } from '@mui/material';
 import FormDialogueButton from './form-dialogue';
 
 export default function DataTable() {
-	const { users, addNewUser, deleteUserById } = useUsersContext();
+	const { users, addExampleUsers, deleteUserById } = useUsersContext();
 
 	// Example user to add (just for testing)
 	const exampleUser: User = {
@@ -75,14 +75,21 @@ export default function DataTable() {
 							}}
 						/>
 					</Box>
-					<Box sx={{ textAlign: 'right', mt: 2 }}>
-						<FormDialogueButton />
-						{/* <Button
-							variant="contained"
-							onClick={() => addNewUser(exampleUser)}
+					<Box
+						sx={{
+							display: 'flex',
+							justifyContent: 'flex-end',
+							gap: 1, // Adds spacing between buttons
+							mt: 2
+						}}
+					>
+						<Button
+							variant="text"
+							onClick={() => addExampleUsers()}
 						>
-							Add User
-						</Button> */}
+							Examples
+						</Button>
+						<FormDialogueButton />
 					</Box>
 				</CardContent>
 			</Card>
