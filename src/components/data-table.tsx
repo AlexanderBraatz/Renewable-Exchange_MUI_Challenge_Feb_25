@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { useUsersContext } from '@/context/users-context';
 import { User } from '@/types/types';
 import { v4 as uuidv4 } from 'uuid';
@@ -7,6 +7,7 @@ import moment from 'moment';
 
 import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
 import { Box, Button, Card, CardContent } from '@mui/material';
+import FormDialogueButton from './form-dialogue';
 
 export default function DataTable() {
 	const { users, addNewUser, deleteUserById } = useUsersContext();
@@ -75,12 +76,13 @@ export default function DataTable() {
 						/>
 					</Box>
 					<Box sx={{ textAlign: 'right', mt: 2 }}>
-						<Button
+						<FormDialogueButton />
+						{/* <Button
 							variant="contained"
 							onClick={() => addNewUser(exampleUser)}
 						>
 							Add User
-						</Button>
+						</Button> */}
 					</Box>
 				</CardContent>
 			</Card>
