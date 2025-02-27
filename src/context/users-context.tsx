@@ -15,7 +15,24 @@ type UsersContextType = {
 const UsersContext = createContext<UsersContextType | null>(null);
 
 export default function UsersContextProvider({ children }: UsersContextProps) {
-	const [users, setUsers] = useState<User[]>([]);
+	const exampleUsers: User[] = [
+		{
+			id: uuidv4(),
+			name: 'tom test',
+			email: 'test@email.com',
+			company: 'Rentable Exchange',
+			dateAdded: new Date()
+		},
+		{
+			id: uuidv4(),
+			name: 'mike test',
+			email: 'otto@email.com',
+			company: 'Rentable Ex',
+			dateAdded: new Date()
+		}
+	];
+	// const [users, setUsers] = useState<User[]>([]);
+	const [users, setUsers] = useState<User[]>([...exampleUsers]);
 
 	// Add a new user and giving them an id and dateAdded
 	function addNewUser(newUserData: Omit<User, 'id' | 'dateAdded'>) {
